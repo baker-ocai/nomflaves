@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Old Country AI — Agentic AI Consulting & Development</title>
+    <meta name="description" content="Old Country AI — Revolutionary Agentic AI consulting, custom development, and enterprise solutions that autonomously build and run the businesses of tomorrow.">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="icon" href="OCAI_Logo-Final_RGB-2%20-%20no%20text.png" type="image/png">
+    <link rel="apple-touch-icon" href="OCAI_Logo-Final_RGB-2%20-%20no%20text.png">
+    <link rel="shortcut icon" href="OCAI_Logo-Final_RGB-2%20-%20no%20text.png" type="image/png">
+
+    <!-- Rajdhani for headlines and CTA -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: auto;
+        }
+
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            color: #f5f5f5;
+            background: #0a0a0a;
+            line-height: 1.35;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        :root {
+            --fg: #ffffff;
+            --muted: #b8c0cc;
+            --accent: #00a0dc;
+            --accent-glow: rgba(0, 160, 220, 0.3);
+            --cta-color: rgba(255, 255, 255, 0.70);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-hover-border: rgba(0, 160, 220, 0.4);
+            /* Font family */
+            --unified-font: 'Rajdhani', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+            --unified-weight: 500;
+            --unified-line-height: 1.3;
+            --unified-letter-spacing: -0.01em;
+            /* Base scale factor for responsive sizing */
+            --scale: 1;
+            /* Text sizes (all scale proportionally) */
+            --headline-size: calc(28px * var(--scale));
+            --section-title-size: calc(44px * var(--scale));
+            --body-size: calc(22px * var(--scale));
+            --legal-size: calc(19px * var(--scale));
+            /* Separator spacing */
+            --separator-spacing: calc(1.5rem * var(--scale));
+        }
+
+        /* Background */
+        .bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(60vmax 60vmax at 10% 10%, rgba(32, 141, 207, .12), transparent 60%),
+            radial-gradient(50vmax 50vmax at 90% 20%, rgba(0, 119, 181, .12), transparent 60%),
+            radial-gradient(70vmax 70vmax at 50% 100%, rgba(0, 255, 199, .06), transparent 65%),
+            linear-gradient(180deg, #0a0a0a 0%, #0b0d12 100%);
+            filter: saturate(1.05) contrast(1);
+        }
+
+        .grain {
+            position: absolute;
+            inset: 0;
+            opacity: .06;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header.hero {
+            display: grid;
+            place-items: center;
+            padding: calc(1.25rem * var(--scale)) calc(1.25rem * var(--scale)) 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-wrap {
+            display: grid;
+            gap: calc(0.75rem * var(--scale));
+            justify-items: center;
+            max-width: min(960px, 95vw);
+        }
+
+        .logo-foreground {
+            width: min(860px, 80vw);
+            height: auto;
+            max-width: calc(420px * var(--scale));
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .35));
+        }
+
+        /* Main headline - "Developing Revolutionary..." */
+        .headline {
+            font-family: var(--unified-font);
+            font-weight: var(--unified-weight);
+            font-size: var(--headline-size);
+            line-height: var(--unified-line-height);
+            letter-spacing: var(--unified-letter-spacing);
+            -webkit-font-smoothing: antialiased;
+            max-width: 980px;
+            margin: 0 auto;
+            color: var(--cta-color);
+            padding: 0 calc(1rem * var(--scale)) var(--separator-spacing) calc(1rem * var(--scale));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: var(--separator-spacing);
+        }
+
+        /* Main content wrapper */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: calc(3rem * var(--scale));
+            padding: 0 calc(1.5rem * var(--scale));
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* What We Are Building Section */
+        .building-section {
+            text-align: center;
+            padding: calc(2rem * var(--scale)) 0;
+        }
+
+        .building-title {
+            font-family: var(--unified-font);
+            font-weight: var(--unified-weight);
+            font-size: var(--section-title-size);
+            line-height: var(--unified-line-height);
+            letter-spacing: var(--unified-letter-spacing);
+            -webkit-font-smoothing: antialiased;
+            color: var(--fg);
+            margin: 0 0 calc(2rem * var(--scale)) 0;
+        }
+
+        .building-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: calc(460px * var(--scale)); /* 15% larger than 400px */
+            margin: 0 auto;
+            gap: calc(1rem * var(--scale));
+        }
+
+        /* Special styling for the building section card */
+        .building-section .service-card {
+            text-align: left;
+            padding: calc(1.44rem * var(--scale)); /* 15% larger padding */
+        }
+
+        .building-section .service-icon {
+            width: calc(36px * var(--scale)) !important; /* Same size as other icons */
+            height: calc(36px * var(--scale)) !important;
+        }
+
+        /* Special styling for Nomikos icon */
+        .nomikos-icon {
+            width: calc(36px * var(--scale)) !important;
+            height: calc(36px * var(--scale)) !important;
+            background: transparent;
+            object-fit: contain;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .building-section .service-card h3 {
+            font-size: calc(32px * var(--scale)); /* 15% larger than headline-size (28px) */
+        }
+
+        .building-section .service-card p {
+            font-size: calc(25px * var(--scale)); /* 15% larger than body-size (22px) */
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 0;
+        }
+
+        .services-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: var(--separator-spacing);
+        }
+
+        /* "Our Services" - section title (doubled) */
+        .services-title {
+            font-family: var(--unified-font);
+            font-weight: var(--unified-weight);
+            font-size: var(--section-title-size);
+            line-height: var(--unified-line-height);
+            letter-spacing: var(--unified-letter-spacing);
+            -webkit-font-smoothing: antialiased;
+            color: var(--fg);
+            margin: 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: calc(1rem * var(--scale));
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: calc(12px * var(--scale));
+            padding: calc(1.25rem * var(--scale));
+            backdrop-filter: blur(10px);
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), rgba(0, 255, 199, 0.6));
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .service-card {
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .service-card:hover {
+            border-color: var(--card-hover-border);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 40px var(--accent-glow);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: calc(36px * var(--scale));
+            height: calc(36px * var(--scale));
+            margin-bottom: calc(0.75rem * var(--scale));
+            color: var(--accent);
+        }
+
+        /* Service titles - same size as headline */
+        .service-card h3 {
+            font-family: var(--unified-font);
+            font-weight: var(--unified-weight);
+            font-size: var(--headline-size);
+            line-height: var(--unified-line-height);
+            letter-spacing: var(--unified-letter-spacing);
+            -webkit-font-smoothing: antialiased;
+            color: var(--fg);
+            margin: 0 0 calc(0.5rem * var(--scale)) 0;
+        }
+
+        .service-card p {
+            font-family: var(--unified-font);
+            font-weight: var(--unified-weight);
+            font-size: var(--body-size);
+            line-height: var(--unified-line-height);
+            letter-spacing: var(--unified-letter-spacing);
+            -webkit-font-smoothing: antialiased;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: calc(3rem * var(--scale));
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--separator-spacing);
+        }
+
+        .cta-wrapper {
+            padding-bottom: var(--separator-spacing);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: var(--separator-spacing);
+        }
+
+        .cta-text {
+            font-family: var(--unified-font);
+            font-weight: var(--unified-weight);
+            font-size: var(--body-size);
+            line-height: var(--unified-line-height);
+            letter-spacing: var(--unified-letter-spacing);
+            -webkit-font-smoothing: antialiased;
+            color: var(--cta-color);
+            margin: 0 0 calc(1rem * var(--scale)) 0;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(0.6rem * var(--scale));
+            padding: calc(0.75rem * var(--scale)) calc(1.5rem * var(--scale));
+            background: linear-gradient(135deg, var(--accent), rgba(0, 180, 200, 1));
+            border: none;
+            border-radius: calc(50px * var(--scale));
+            color: #fff;
+            font-family: var(--unified-font);
+            font-weight: var(--unified-weight);
+            font-size: var(--body-size);
+            line-height: var(--unified-line-height);
+            letter-spacing: var(--unified-letter-spacing);
+            -webkit-font-smoothing: antialiased;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 160, 220, 0.5);
+        }
+
+        .cta-button svg {
+            width: calc(22px * var(--scale));
+            height: calc(22px * var(--scale));
+        }
+
+        /* Footer */
+        footer.site-footer {
+            padding: 0 0 calc(1rem * var(--scale));
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-direction: column;
+            gap: calc(0.5rem * var(--scale));
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 calc(1.5rem * var(--scale));
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: calc(2rem * var(--scale));
+            font-family: var(--unified-font);
+            font-size: var(--legal-size);
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.18s ease;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .copyright {
+            font-family: var(--unified-font);
+            font-size: var(--legal-size);
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .legal-links {
+            display: flex;
+            gap: calc(1.5rem * var(--scale));
+            font-family: var(--unified-font);
+            font-size: var(--legal-size);
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            transition: color 0.18s ease;
+        }
+
+        .legal-links a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 1200px) {
+            :root {
+                --scale: 0.85;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            :root {
+                --scale: 0.78;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            :root {
+                --scale: 0.80;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            :root {
+                --scale: 0.78;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --scale: 0.76;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: calc(0.5rem * var(--scale));
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --scale: 0.75; /* Minimum scale - no smaller than 75% */
+            }
+        }
+
+        /* Height-based scaling for short screens - minimum 75% */
+        @media (max-height: 700px) {
+            :root {
+                --scale: 0.80;
+            }
+        }
+
+        @media (max-height: 600px) {
+            :root {
+                --scale: 0.75; /* Minimum scale - no smaller than 75% */
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .service-card, .cta-button, .footer-links a, .legal-links a {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="bg">
+    <div class="grain"></div>
+</div>
+
+<div class="page">
+    <header class="hero" role="banner">
+        <div class="brand-wrap">
+            <img
+                    class="logo-foreground"
+                    src="https://github.com/bthom425/4-me/blob/main/OCAI_Logo-Final_RGB-2.png?raw=true"
+                    alt="Old Country AI logo"
+                    loading="eager"
+                    decoding="async"
+            />
+
+            <p class="headline" aria-live="polite">
+                Developing Revolutionary Agentic AI That Autonomously Builds, Launches, and Runs the Businesses of
+                Tomorrow
+            </p>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <!-- What We Are Building Section -->
+        <section class="building-section" aria-labelledby="building-title">
+            <h2 class="building-title" id="building-title">What We Are Building</h2>
+            <div class="building-grid">
+                <a href="https://nomikos.ai" class="service-card" target="_blank" rel="noopener noreferrer">
+                    <img src="https://raw.githubusercontent.com/baker-ocai/nomflaves/main/OCAI_Logo-Final_RGB-2%20-%20no%20text.png" alt="Nomikos AI Logo" class="service-icon nomikos-icon">
+                    <h3>Nomikos AI</h3>
+                    <p>Revolutionary contract analysis powered by AI—built the Old Country way.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section" aria-labelledby="services-title">
+            <div class="services-content">
+                <div class="services-header">
+                    <h2 class="services-title" id="services-title">Our Services</h2>
+                </div>
+
+                <div class="services-grid" role="list">
+                <a href="mailto:agentmuse@oldcountry.ai?subject=AI%20Technology%20Consulting%20Inquiry" class="service-card" role="listitem">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                    <h3>AI Technology Consulting</h3>
+                    <p>Strategic guidance for implementing agentic AI into your operations with tailored roadmaps.</p>
+                </a>
+
+                <a href="mailto:agentmuse@oldcountry.ai?subject=Custom%20Tech%20Development%20Inquiry" class="service-card" role="listitem">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                        <line x1="12" y1="2" x2="12" y2="22"/>
+                    </svg>
+                    <h3>Custom Tech Development</h3>
+                    <p>Bespoke AI-powered applications and integrations built to your unique requirements.</p>
+                </a>
+
+                <a href="mailto:agentmuse@oldcountry.ai?subject=Enterprise%20AI%20Solutions%20Inquiry" class="service-card" role="listitem">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                        <path d="M6 8h.01M9 8h.01M12 8h6"/>
+                    </svg>
+                    <h3>Enterprise AI Solutions</h3>
+                    <p>Multi-agent systems for enterprise-scale operations that handle complex workflows intelligently.</p>
+                </a>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <div class="cta-wrapper">
+                    <p class="cta-text">Ready to transform your business with autonomous AI?</p>
+                    <a href="mailto:agentmuse@oldcountry.ai?subject=AI%20Consulting%20Inquiry" class="cta-button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        Schedule a Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-grid" aria-label="Links">
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 Old Country AI LLC. All rights reserved.
+                </div>
+                <div class="legal-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-use.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
